@@ -63,27 +63,27 @@ namespace defuser
 
     class FusionsManager
     {
-        Fusions fusions;
+        public Fusions Fusions { get; set; }
 
         public FusionsManager()
         {
-            if (!this.Init()) throw new Exception("Initialization of FusionsManager");
+            if (!this.Init()) throw new Exception("Error in Initialization of FusionsManager");
         }
 
         bool Init()
         {
-            fusions = new Fusions();
+            Fusions = new Fusions();
 
             var enumerated = Enum.GetValues(typeof(Arcanum));
 
             foreach (Arcanum arcana in enumerated)
             {
                 if (arcana == Arcanum.World) continue;
-                fusions.FusionSet.Add(arcana, new Fusion());
+                Fusions.FusionSet.Add(arcana, new Fusion());
                 foreach (Arcanum arcana2 in enumerated)
                 {
                     if (arcana2 == Arcanum.World) continue;
-                    fusions[arcana].Rule.Add(arcana2, null);
+                    Fusions[arcana].Rule.Add(arcana2, null);
                 }
             }
 
@@ -115,55 +115,55 @@ namespace defuser
             #endregion
 
             #region Arcanum.Fool
-            fusions[Arcanum.Fool][Arcanum.Fool] = Arcanum.Fool;
-            fusions[Arcanum.Fool][Arcanum.Magician] = Arcanum.Temperance;
-            fusions[Arcanum.Fool][Arcanum.Priestess] = Arcanum.Death;
-            fusions[Arcanum.Fool][Arcanum.Empress] = Arcanum.Moon;
-            fusions[Arcanum.Fool][Arcanum.Emperor] = Arcanum.Death;
-            fusions[Arcanum.Fool][Arcanum.Hierophant] = Arcanum.Chariot;
-            fusions[Arcanum.Fool][Arcanum.Lovers] = Arcanum.Empress;
-            fusions[Arcanum.Fool][Arcanum.Chariot] = Arcanum.Sun;
-            fusions[Arcanum.Fool][Arcanum.Justice] = Arcanum.Magician;
-            fusions[Arcanum.Fool][Arcanum.Hermit] = Arcanum.Strength;
-            fusions[Arcanum.Fool][Arcanum.Fortune] = Arcanum.Magician;
-            fusions[Arcanum.Fool][Arcanum.Strength] = Arcanum.Magician;
-            fusions[Arcanum.Fool][Arcanum.Hanged] = Arcanum.Strength;
-            fusions[Arcanum.Fool][Arcanum.Death] = Arcanum.Hermit;
-            fusions[Arcanum.Fool][Arcanum.Temperance] = Arcanum.Hierophant;
-            fusions[Arcanum.Fool][Arcanum.Devil] = Arcanum.Temperance;
-            fusions[Arcanum.Fool][Arcanum.Tower] = Arcanum.Star;
-            fusions[Arcanum.Fool][Arcanum.Star] = Arcanum.Empress;
-            fusions[Arcanum.Fool][Arcanum.Moon] = Arcanum.Emperor;
-            fusions[Arcanum.Fool][Arcanum.Sun] = Arcanum.Devil;
-            fusions[Arcanum.Fool][Arcanum.Judgement] = Arcanum.Hanged;
-            fusions[Arcanum.Fool][Arcanum.Jester] = Arcanum.Priestess;
-            fusions[Arcanum.Fool][Arcanum.Aeon] = Arcanum.Death;
+            Fusions[Arcanum.Fool][Arcanum.Fool] = Arcanum.Fool;
+            Fusions[Arcanum.Fool][Arcanum.Magician] = Arcanum.Temperance;
+            Fusions[Arcanum.Fool][Arcanum.Priestess] = Arcanum.Death;
+            Fusions[Arcanum.Fool][Arcanum.Empress] = Arcanum.Moon;
+            Fusions[Arcanum.Fool][Arcanum.Emperor] = Arcanum.Death;
+            Fusions[Arcanum.Fool][Arcanum.Hierophant] = Arcanum.Chariot;
+            Fusions[Arcanum.Fool][Arcanum.Lovers] = Arcanum.Empress;
+            Fusions[Arcanum.Fool][Arcanum.Chariot] = Arcanum.Sun;
+            Fusions[Arcanum.Fool][Arcanum.Justice] = Arcanum.Magician;
+            Fusions[Arcanum.Fool][Arcanum.Hermit] = Arcanum.Strength;
+            Fusions[Arcanum.Fool][Arcanum.Fortune] = Arcanum.Magician;
+            Fusions[Arcanum.Fool][Arcanum.Strength] = Arcanum.Magician;
+            Fusions[Arcanum.Fool][Arcanum.Hanged] = Arcanum.Strength;
+            Fusions[Arcanum.Fool][Arcanum.Death] = Arcanum.Hermit;
+            Fusions[Arcanum.Fool][Arcanum.Temperance] = Arcanum.Hierophant;
+            Fusions[Arcanum.Fool][Arcanum.Devil] = Arcanum.Temperance;
+            Fusions[Arcanum.Fool][Arcanum.Tower] = Arcanum.Star;
+            Fusions[Arcanum.Fool][Arcanum.Star] = Arcanum.Empress;
+            Fusions[Arcanum.Fool][Arcanum.Moon] = Arcanum.Emperor;
+            Fusions[Arcanum.Fool][Arcanum.Sun] = Arcanum.Devil;
+            Fusions[Arcanum.Fool][Arcanum.Judgement] = Arcanum.Hanged;
+            Fusions[Arcanum.Fool][Arcanum.Jester] = Arcanum.Priestess;
+            Fusions[Arcanum.Fool][Arcanum.Aeon] = Arcanum.Death;
             #endregion
 
             #region Arcanum.Magician
-            fusions[Arcanum.Magician][Arcanum.Fool] = Arcanum.Fortune;
-            fusions[Arcanum.Magician][Arcanum.Magician] = Arcanum.Magician;
-            fusions[Arcanum.Magician][Arcanum.Priestess] = Arcanum.Moon;
-            fusions[Arcanum.Magician][Arcanum.Empress] = Arcanum.Justice;
-            fusions[Arcanum.Magician][Arcanum.Emperor] = Arcanum.Strength;
-            fusions[Arcanum.Magician][Arcanum.Hierophant] = Arcanum.Devil;
-            fusions[Arcanum.Magician][Arcanum.Lovers] = Arcanum.Death;
-            fusions[Arcanum.Magician][Arcanum.Chariot] = Arcanum.Temperance;
-            fusions[Arcanum.Magician][Arcanum.Justice] = Arcanum.Strength;
-            fusions[Arcanum.Magician][Arcanum.Hermit] = Arcanum.Empress;
-            fusions[Arcanum.Magician][Arcanum.Fortune] = Arcanum.Lovers;
-            fusions[Arcanum.Magician][Arcanum.Strength] = Arcanum.Justice;
-            fusions[Arcanum.Magician][Arcanum.Hanged] = Arcanum.Sun;
-            fusions[Arcanum.Magician][Arcanum.Death] = Arcanum.Emperor;
-            fusions[Arcanum.Magician][Arcanum.Temperance] = Arcanum.Strength;
-            fusions[Arcanum.Magician][Arcanum.Devil] = Arcanum.Sun;
-            fusions[Arcanum.Magician][Arcanum.Tower] = Arcanum.Hanged;
-            fusions[Arcanum.Magician][Arcanum.Star] = null;
-            fusions[Arcanum.Magician][Arcanum.Moon] = Arcanum.Star;
-            fusions[Arcanum.Magician][Arcanum.Sun] = Arcanum.Chariot;
-            fusions[Arcanum.Magician][Arcanum.Judgement] = Arcanum.Lovers;
-            fusions[Arcanum.Magician][Arcanum.Jester] = Arcanum.Hierophant;
-            fusions[Arcanum.Magician][Arcanum.Aeon] = Arcanum.Emperor;
+            Fusions[Arcanum.Magician][Arcanum.Fool] = Arcanum.Fortune;
+            Fusions[Arcanum.Magician][Arcanum.Magician] = Arcanum.Magician;
+            Fusions[Arcanum.Magician][Arcanum.Priestess] = Arcanum.Moon;
+            Fusions[Arcanum.Magician][Arcanum.Empress] = Arcanum.Justice;
+            Fusions[Arcanum.Magician][Arcanum.Emperor] = Arcanum.Strength;
+            Fusions[Arcanum.Magician][Arcanum.Hierophant] = Arcanum.Devil;
+            Fusions[Arcanum.Magician][Arcanum.Lovers] = Arcanum.Death;
+            Fusions[Arcanum.Magician][Arcanum.Chariot] = Arcanum.Temperance;
+            Fusions[Arcanum.Magician][Arcanum.Justice] = Arcanum.Strength;
+            Fusions[Arcanum.Magician][Arcanum.Hermit] = Arcanum.Empress;
+            Fusions[Arcanum.Magician][Arcanum.Fortune] = Arcanum.Lovers;
+            Fusions[Arcanum.Magician][Arcanum.Strength] = Arcanum.Justice;
+            Fusions[Arcanum.Magician][Arcanum.Hanged] = Arcanum.Sun;
+            Fusions[Arcanum.Magician][Arcanum.Death] = Arcanum.Emperor;
+            Fusions[Arcanum.Magician][Arcanum.Temperance] = Arcanum.Strength;
+            Fusions[Arcanum.Magician][Arcanum.Devil] = Arcanum.Sun;
+            Fusions[Arcanum.Magician][Arcanum.Tower] = Arcanum.Hanged;
+            Fusions[Arcanum.Magician][Arcanum.Star] = null;
+            Fusions[Arcanum.Magician][Arcanum.Moon] = Arcanum.Star;
+            Fusions[Arcanum.Magician][Arcanum.Sun] = Arcanum.Chariot;
+            Fusions[Arcanum.Magician][Arcanum.Judgement] = Arcanum.Lovers;
+            Fusions[Arcanum.Magician][Arcanum.Jester] = Arcanum.Hierophant;
+            Fusions[Arcanum.Magician][Arcanum.Aeon] = Arcanum.Emperor;
             #endregion
 
             #region Arcanum.Priestess
@@ -755,77 +755,77 @@ namespace defuser
 
             try
             {
-                string s = Newtonsoft.Json.JsonConvert.SerializeObject(fusions, Newtonsoft.Json.Formatting.Indented);
+                string s = Newtonsoft.Json.JsonConvert.SerializeObject(Fusions, Newtonsoft.Json.Formatting.Indented);
                 //fusions = fusions ?? Newtonsoft.Json.JsonConvert.DeserializeObject<Fusions>(System.IO.File.ReadAllText(@"f:\tmp\fusions.json"));
             }
             catch (Exception)
             {
                 return false;
             }
-            return (fusions != null);
+            return (Fusions != null);
         }
 
         private void Fill(Arcanum first, params int?[] result)
         {
             if (result.Length != 23) throw new ArgumentException("Length different than expected 23", "result");
-            fusions[first][Arcanum.Fool] = (Arcanum?)result[0];
-            fusions[first][Arcanum.Magician] = (Arcanum?)result[1];
-            fusions[first][Arcanum.Priestess] = (Arcanum?)result[2];
-            fusions[first][Arcanum.Empress] = (Arcanum?)result[3];
-            fusions[first][Arcanum.Emperor] = (Arcanum?)result[4];
-            fusions[first][Arcanum.Hierophant] = (Arcanum?)result[5];
-            fusions[first][Arcanum.Lovers] = (Arcanum?)result[6];
-            fusions[first][Arcanum.Chariot] = (Arcanum?)result[7];
-            fusions[first][Arcanum.Justice] = (Arcanum?)result[8];
-            fusions[first][Arcanum.Hermit] = (Arcanum?)result[9];
-            fusions[first][Arcanum.Fortune] = (Arcanum?)result[10];
-            fusions[first][Arcanum.Strength] = (Arcanum?)result[11];
-            fusions[first][Arcanum.Hanged] = (Arcanum?)result[12];
-            fusions[first][Arcanum.Death] = (Arcanum?)result[13];
-            fusions[first][Arcanum.Temperance] = (Arcanum?)result[14];
-            fusions[first][Arcanum.Devil] = (Arcanum?)result[15];
-            fusions[first][Arcanum.Tower] = (Arcanum?)result[16];
-            fusions[first][Arcanum.Star] = (Arcanum?)result[17];
-            fusions[first][Arcanum.Moon] = (Arcanum?)result[18];
-            fusions[first][Arcanum.Sun] = (Arcanum?)result[19];
-            fusions[first][Arcanum.Judgement] = (Arcanum?)result[20];
-            fusions[first][Arcanum.Jester] = (Arcanum?)result[21];
-            fusions[first][Arcanum.Aeon] = (Arcanum?)result[22];
+            Fusions[first][Arcanum.Fool] = (Arcanum?)result[0];
+            Fusions[first][Arcanum.Magician] = (Arcanum?)result[1];
+            Fusions[first][Arcanum.Priestess] = (Arcanum?)result[2];
+            Fusions[first][Arcanum.Empress] = (Arcanum?)result[3];
+            Fusions[first][Arcanum.Emperor] = (Arcanum?)result[4];
+            Fusions[first][Arcanum.Hierophant] = (Arcanum?)result[5];
+            Fusions[first][Arcanum.Lovers] = (Arcanum?)result[6];
+            Fusions[first][Arcanum.Chariot] = (Arcanum?)result[7];
+            Fusions[first][Arcanum.Justice] = (Arcanum?)result[8];
+            Fusions[first][Arcanum.Hermit] = (Arcanum?)result[9];
+            Fusions[first][Arcanum.Fortune] = (Arcanum?)result[10];
+            Fusions[first][Arcanum.Strength] = (Arcanum?)result[11];
+            Fusions[first][Arcanum.Hanged] = (Arcanum?)result[12];
+            Fusions[first][Arcanum.Death] = (Arcanum?)result[13];
+            Fusions[first][Arcanum.Temperance] = (Arcanum?)result[14];
+            Fusions[first][Arcanum.Devil] = (Arcanum?)result[15];
+            Fusions[first][Arcanum.Tower] = (Arcanum?)result[16];
+            Fusions[first][Arcanum.Star] = (Arcanum?)result[17];
+            Fusions[first][Arcanum.Moon] = (Arcanum?)result[18];
+            Fusions[first][Arcanum.Sun] = (Arcanum?)result[19];
+            Fusions[first][Arcanum.Judgement] = (Arcanum?)result[20];
+            Fusions[first][Arcanum.Jester] = (Arcanum?)result[21];
+            Fusions[first][Arcanum.Aeon] = (Arcanum?)result[22];
         }
 
         private void Fill(Arcanum first, params Arcanum?[] result)
         {
             if (result.Length != 23) throw new ArgumentException("Length different than expected 23", "result");
-            fusions[first][Arcanum.Fool] = result[0];
-            fusions[first][Arcanum.Magician] = result[1];
-            fusions[first][Arcanum.Priestess] = result[2];
-            fusions[first][Arcanum.Empress] = result[3];
-            fusions[first][Arcanum.Emperor] = result[4];
-            fusions[first][Arcanum.Hierophant] = result[5];
-            fusions[first][Arcanum.Lovers] = result[6];
-            fusions[first][Arcanum.Chariot] = result[7];
-            fusions[first][Arcanum.Justice] = result[8];
-            fusions[first][Arcanum.Hermit] = result[9];
-            fusions[first][Arcanum.Fortune] = result[10];
-            fusions[first][Arcanum.Strength] = result[11];
-            fusions[first][Arcanum.Hanged] = result[12];
-            fusions[first][Arcanum.Death] = result[13];
-            fusions[first][Arcanum.Temperance] = result[14];
-            fusions[first][Arcanum.Devil] = result[15];
-            fusions[first][Arcanum.Tower] = result[16];
-            fusions[first][Arcanum.Star] = result[17];
-            fusions[first][Arcanum.Moon] = result[18];
-            fusions[first][Arcanum.Sun] = result[19];
-            fusions[first][Arcanum.Judgement] = result[20];
-            fusions[first][Arcanum.Jester] = result[21];
-            fusions[first][Arcanum.Aeon] = result[22];
+            Fusions[first][Arcanum.Fool] = result[0];
+            Fusions[first][Arcanum.Magician] = result[1];
+            Fusions[first][Arcanum.Priestess] = result[2];
+            Fusions[first][Arcanum.Empress] = result[3];
+            Fusions[first][Arcanum.Emperor] = result[4];
+            Fusions[first][Arcanum.Hierophant] = result[5];
+            Fusions[first][Arcanum.Lovers] = result[6];
+            Fusions[first][Arcanum.Chariot] = result[7];
+            Fusions[first][Arcanum.Justice] = result[8];
+            Fusions[first][Arcanum.Hermit] = result[9];
+            Fusions[first][Arcanum.Fortune] = result[10];
+            Fusions[first][Arcanum.Strength] = result[11];
+            Fusions[first][Arcanum.Hanged] = result[12];
+            Fusions[first][Arcanum.Death] = result[13];
+            Fusions[first][Arcanum.Temperance] = result[14];
+            Fusions[first][Arcanum.Devil] = result[15];
+            Fusions[first][Arcanum.Tower] = result[16];
+            Fusions[first][Arcanum.Star] = result[17];
+            Fusions[first][Arcanum.Moon] = result[18];
+            Fusions[first][Arcanum.Sun] = result[19];
+            Fusions[first][Arcanum.Judgement] = result[20];
+            Fusions[first][Arcanum.Jester] = result[21];
+            Fusions[first][Arcanum.Aeon] = result[22];
         }
 
         public Arcanum? Fusion(Arcanum a1, Arcanum a2)
         {
             Arcanum first = ((int)a1 < (int)a2) ? a1 : a2;
             Arcanum second = ((int)a1 < (int)a2) ? a2 : a1;
-            return fusions[first][second];
+            return Fusions[first][second];
         }
 
         public Arcanum? Fusion(Arcanum a1, Arcanum a2, Arcanum a3)

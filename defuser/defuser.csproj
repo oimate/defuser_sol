@@ -46,7 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FusionManager.cs" />
-    <Compile Include="PersonaManager.cs" />
+    <Compile Include="PersonasManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
